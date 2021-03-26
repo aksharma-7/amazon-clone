@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import Product from '../Components/Product';
 
 const Home = () => {
   return (
     <Container>
       <Banner></Banner>
 
-      <Content>lorem ipsum dolor sit amet, consectetur adip</Content>
+      <Content>
+        <Product />
+        <Product />
+      </Content>
     </Container>
   );
 };
@@ -23,6 +27,7 @@ const Banner = styled.div`
   min-height: 600px;
   background-position: center;
   background-size: cover;
+  z-index: 1;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 `;
 
@@ -31,4 +36,5 @@ const Content = styled.div`
   padding-left: 10px;
   padding-right: 10px;
   margin-top: -350px;
+  display: flex;
 `;
