@@ -32,7 +32,6 @@ const Banner = styled.div`
 `;
 
 const Content = styled.div`
-  background: white;
   padding-left: 10px;
   padding-right: 10px;
   margin-top: -350px;

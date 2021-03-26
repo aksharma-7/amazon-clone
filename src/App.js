@@ -1,13 +1,14 @@
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Header from './Components/Header';
 import Cart from './Views/Cart';
 import Home from './Views/Home';
+import styled from 'styled-components';
 
 function App() {
   return (
     <Router>
-      <div className='App'>
+      <Container>
         <Header />
 
         <Switch>
@@ -19,9 +20,11 @@ function App() {
             <Home />
           </Route>
         </Switch>
-      </div>
+      </Container>
     </Router>
   );
 }
 
 export default App;
+
+const Container = styled.div``;
