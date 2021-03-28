@@ -30,6 +30,7 @@ const Home = () => {
       <Content>
         {products.map((data) => (
           <Product
+            key={data.id}
             title={data.product.name}
             price={data.product.price}
             rating={data.product.rating}
