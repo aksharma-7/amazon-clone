@@ -2,6 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CartItem = ({ id, item }) => {
+  let options = [];
+
+  for (let i = 1; i < Math.max(item.quantity + 1, 20); i++) {
+    options.push(
+      <option key={i} value={i}>
+        Qty: {i}
+      </option>
+    );
+  }
+
   return (
     <Container>
       <ImageContainer>
@@ -13,7 +23,9 @@ const CartItem = ({ id, item }) => {
           <h2>{item.name}</h2>
         </CartItemInfoTop>
         <CartItemInfoBottom>
-          <CartItemQuantityContainer>{item.quantity}</CartItemQuantityContainer>
+          <CartItemQuantityContainer>
+            <select value={item.quantity}>{options}</select>
+          </CartItemQuantityContainer>
           <CartItemDeleteContainer>Delete</CartItemDeleteContainer>
         </CartItemInfoBottom>
       </CartItemInfo>
@@ -29,6 +41,7 @@ const Container = styled.div`
   padding-top: 12px;
   padding-bottom: 12px;
   display: flex;
+  border-bottom: 1px solid #ddd;
 `;
 
 const ImageContainer = styled.div`
@@ -44,7 +57,9 @@ const ImageContainer = styled.div`
   }
 `;
 
-const CartItemInfo = styled.div``;
+const CartItemInfo = styled.div`
+  flex-grow: 1;
+`;
 
 const CartItemInfoTop = styled.div`
   color: #007185;
@@ -56,9 +71,20 @@ const CartItemInfoTop = styled.div`
 const CartItemInfoBottom = styled.div`
   display: flex;
   margin-top: 4px;
+  align-items: center;
 `;
 
-const CartItemQuantityContainer = styled.div``;
+const CartItemQuantityContainer = styled.div`
+  select {
+    border-radius: 7px;
+    background-color: #f0f2f2;
+    padding: 8px;
+    box-shadow: 0 2px 5px rgba(15, 17, 17, 0.15);
+    :focus {
+      outline: none;
+    }
+  }
+`;
 
 const CartItemDeleteContainer = styled.div`
   color: #007185;

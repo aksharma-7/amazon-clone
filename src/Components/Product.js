@@ -1,7 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import { db } from '../firebase';
 
 const Product = ({ title, price, rating, image, id }) => {
+  const addToCart = () => {
+    const cartItem = db.collection('cartItems').doc(id);
+    cartItem.get().then((doc) => {
+      console.log(doc);
+      if (doc.exists) {
+        cartItem.update({
+          quantity: doc.data().quantity + 1,
+        });
+      } else {
+        db.collection('cartItems').doc(id).set({
+          name: title,
+          image: image,
+          price: price,
+          quantity: 1,
+        });
+      }
+    });
+  };
+
   return (
     <Container>
       <Title>{title}</Title>
@@ -19,7 +39,7 @@ const Product = ({ title, price, rating, image, id }) => {
       <Image src={image} />
 
       <ActionSection>
-        <AddToCartButton>Add to Cart</AddToCartButton>
+        <AddToCartButton onClick={addToCart}>Add to Cart</AddToCartButton>
       </ActionSection>
     </Container>
   );
@@ -66,4 +86,5 @@ const AddToCartButton = styled.button`
   background-color: #f0c14b;
   border: 2px solid #a88734;
   border-radius: 2px;
+  cursor: pointer;
 `;

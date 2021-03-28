@@ -22,6 +22,7 @@ const Container = styled.div`
   flex: 0.8;
   margin-right: 18px;
   padding: 20px;
+  background-color: white;
 `;
 
 const Title = styled.h1`
