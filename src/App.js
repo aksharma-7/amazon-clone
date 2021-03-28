@@ -14,7 +14,7 @@ function App() {
     db.collection('cartItems').onSnapshot((snapshot) => {
       const tempItems = snapshot.docs.map((doc) => ({
         id: doc.id,
-        products: doc.data(),
+        product: doc.data(),
       }));
       setCartItems(tempItems);
     });
@@ -27,7 +27,7 @@ function App() {
   return (
     <Router>
       <Container>
-        <Header />
+        <Header cartItems={cartItems} />
 
         <Switch>
           <Route path='/cart'>

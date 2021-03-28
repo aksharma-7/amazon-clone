@@ -9,7 +9,7 @@ function CartItems({ cartItems }) {
       <hr />
       <ItemsContainer>
         {cartItems.map((item) => (
-          <CartItem key={item.id} id={item.id} item={item.products} />
+          <CartItem key={item.id} id={item.id} item={item.product} />
         ))}
       </ItemsContainer>
     </Container>
