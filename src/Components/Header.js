@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 const Header = ({ cartItems }) => {
   const getCount = () => {
     let count = 0;
-    console.log(cartItems);
     cartItems.forEach((item) => {
       count += item.product.quantity;
     });
