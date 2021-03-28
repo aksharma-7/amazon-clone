@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Login from './Views/Login';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user'))); // setting initial value of state from local storage
   const [cartItems, setCartItems] = useState([]);
 
   const getCartItems = () => {
@@ -24,6 +24,8 @@ function App() {
 
   const signOut = () => {
     auth.signOut().then(() => {
+      // removing user from local storage so user is removed on signout
+      localStorage.removeItem('user');
       setUser(null);
     });
   };

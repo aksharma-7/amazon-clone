@@ -13,6 +13,8 @@ const Login = ({ setUser }) => {
           email: user.email,
           photo: user.photoURL,
         };
+        // data persist after refresh as state changes tp initial state with every refresh
+        localStorage.setItem('user', JSON.stringify(newUser));
         setUser(newUser);
       })
       .catch((error) => {
